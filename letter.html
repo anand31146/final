@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Indie+Flower&display=swap');
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Quicksand', sans-serif;
+            overflow: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            min-height: 500px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+        }
+
+        .letter {
+            font-size: 24px;
+            line-height: 1.8;
+            font-family: 'Indie Flower', cursive;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            white-space: pre-wrap;
+            margin-bottom: 40px;
+            min-height: 300px;
+        }
+
+        .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 32px;
+            color: white;
+            text-align: right;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .signature.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .next-button {
+            position: absolute;
+            bottom: 30px;
+            padding: 15px 40px;
+            font-size: 24px;
+            font-family: 'Great Vibes', cursive;
+            background: linear-gradient(45deg, #ff6b6b, #ffe66d);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.5s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .next-button.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .next-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        #continue-button {
+            left: 20%;
+            transform: translateX(-50%);
+        }
+
+        #next-button {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="letter"></div>
+        <div class="signature"></div>
+        <button class="next-button" id="continue-button">Continue to Next Surprise ❤️</button>
+        <button class="next-button" id="next-button">ghibli memories😂❤️</button>
+    </div>
+
+    <script>
+        const letterText = `Dearest Love,\n\nhappiest birthday to you😘❤. Hope ki aaune year ramro hoss tmro / hamro lagi . aaune saal ma ramaro ramaro kaam garnu ,malai rish uthaunu bahek 😂, irritate garnu bahek 😂and ho motki ali patli hunu ,motki bhaisi ( just kidding feri serious na vaye halnu 😒) hamro lyf ma j jati kura xa sab sahi rahos Kahile khi na bigros and ho bday ho tmro so khi start gara khi ramro kura gene yo year ta kam se kam jastai ki mw mathi badhi sanka na garnu ,😒tmilai ni tha xa tmi  badhi k k sochxeu jun ki khi hunna testo in reality 😒tyo tmilai ni tha xa ani pni , yeta malai time hudaina bby you have to manage ali ,mw bata jati hunxa mw garxu nai time dine try bt kahile milena vane bujhna khojnu plzz 😒( bday ho so ali gyan di raxu ) and ho mw tmilai jahile rati disturb gari dinxu sorry tyo ko lagi😅 bt k garnu time nai hunna ,i hope tmi rosa xaenau hola tyo karan ta\n\nbadhi khi vandina happy birthday my love once again😘❤💋\n\n I love you😘❤💋
+
+`;
+
+        const signatureText = "❤️ Your Forever Love ❤️";
+
+        let index = 0;
+        const letterElement = document.querySelector(".letter");
+        const signatureElement = document.querySelector(".signature");
+        const continueButton = document.getElementById("continue-button");
+        const nextButton = document.getElementById("next-button");
+
+        function typeLetter() {
+            if (index < letterText.length) {
+                letterElement.textContent += letterText.charAt(index);
+                index++;
+                setTimeout(typeLetter, 10);
+            } else {
+                signatureElement.textContent = signatureText;
+                signatureElement.classList.add("show");
+                setTimeout(() => {
+                    continueButton.classList.add("show");
+                    nextButton.classList.add("show");
+                }, 1000);
+            }
+        }
+
+        setTimeout(typeLetter, 500);
+
+        continueButton.addEventListener("click", function() {
+            document.querySelector(".container").classList.add("fade-out");
+            setTimeout(() => { window.location.href = "surprise.html"; }, 2000);
+        });
+
+        nextButton.addEventListener("click", function() {
+            document.querySelector(".container").classList.add("fade-out");
+            setTimeout(() => { window.location.href = "gallary.html"; }, 2000);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Madam Ji! 💋🎂🥳</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        @keyframes slideUp {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes floatingKisses {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+        .wiggle-text {
+            animation: wiggle 2s infinite ease-in-out;
+        }
+        .heartbeat {
+            animation: heartbeat 1.5s infinite ease-in-out;
+        }
+        .slide-up {
+            animation: slideUp 0.5s ease-out forwards;
+        }
+        .love-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255,105,180,0.3);
+        }
+        .love-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255,105,180,0.5);
+        }
+        .glass-effect {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+        .floating-kiss {
+            position: absolute;
+            animation: floatingKisses 2s linear infinite;
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col items-center justify-center bg-gradient-to-br from-pink-200 via-red-100 to-pink-300 relative overflow-hidden">
+    
+    <h1 class="text-5xl font-['Pacifico'] text-pink-600 mb-8 wiggle-text text-center">
+        Happy Birthday Madam Ji! 💋🎂🥳
+    </h1>
+
+    <div class="button-container">
+        <button id="go-button" class="love-button bg-green-400 hover:bg-green-500 text-white font-['Bubblegum_Sans'] 
+                                          text-3xl py-6 px-12 rounded-full heartbeat glass-effect">
+          jaadui button😂
+        </button>
+
+        <button id="play-button" class="love-button bg-blue-400 hover:bg-blue-500 text-white font-['Bubblegum_Sans'] 
+                                          text-3xl py-6 px-12 rounded-full heartbeat glass-effect">
+            Let's Play a Game! 🎮
+        </button>
+
+        <button id="enter-button" class="love-button bg-red-400 hover:bg-red-500 text-white font-['Bubblegum_Sans'] 
+                                          text-3xl py-6 px-12 rounded-full heartbeat glass-effect">
+           destroyer(boom!!!)😂
+        </button>
+    </div>
+    
+    <div class="mt-10 text-center text-pink-700 text-xl font-['Bubblegum_Sans']">
+        <p class="slide-up">I love you so muchhh!!!!! 💋🎂🥳❤️</p>
+        <p class="slide-up font-bold text-2xl">Total Kisses and cakes Sent: <span id="kiss-count" class="text-red-600">0000</span></p>
+        <p class="slide-up">Madam Ji, the kisses and cakes will never stop! 😘💖</p>
+    </div>
+    
+    <button id="surprise-button" class="mt-6 love-button border-2 border-pink-500 text-pink-600 
+                                  px-10 py-4 rounded-full text-2xl font-bold shadow-lg">
+        Tap for a Surprise Kiss And Cake! 💋🎂
+    </button>
+
+    <script>
+        document.getElementById('go-button').addEventListener('click', () => {
+            document.body.style.transition = 'opacity 1s';
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = 'lovestory.html';
+            }, 1000);
+        });
+
+        document.getElementById('play-button').addEventListener('click', () => {
+            document.body.style.transition = 'opacity 1s';
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = 'game.html';
+            }, 1000);
+        });
+
+        document.getElementById('enter-button').addEventListener('click', () => {
+            document.body.style.transition = 'opacity 1s';
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = 'loveyou.html';
+            }, 1000);
+        });
+
+        let kissCount = 0;
+        document.getElementById('surprise-button').addEventListener('click', () => {
+            kissCount++;
+            document.getElementById('kiss-count').innerText = kissCount.toString().padStart(4, '0');
+            let kissIcon = document.createElement('div');
+            kissIcon.innerText = '💋🎂';
+            kissIcon.classList.add('floating-kiss');
+            kissIcon.style.left = Math.random() * 100 + 'vw';
+            kissIcon.style.bottom = '0';
+            kissIcon.style.fontSize = '2rem';
+            document.body.appendChild(kissIcon);
+            setTimeout(() => kissIcon.remove(), 2000);
+        });
+    </script>
+</body>
+</html>
